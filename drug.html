@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safety Road - Drug</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body id="page-drug">
+
+<nav class="navbar navbar-expand-lg navbar-color shadow-sm py-3 fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" style="margin-left: 30px;" id="logo-home">
+      <img src="image/logo.png" alt="Logo" height="50">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#" data-section="home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-section="chart1">Drug Tests</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-section="chart2-line">Enforcement</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-section="chart2-age">Age Group</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-section="chart3">Jurisdiction</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-section="chart4">Drug Types</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Introduction -->
+<section id="home-section">
+  <div class="container min-vh-100 d-flex align-items-center">
+    <div class="row align-items-center g-5">
+      <!-- Left side -->
+      <div class="col-lg-6">
+        <h1 class="intro-headline">
+          Road Safety Enforcement in Australia:<br>
+          <span class="intro-highlight">Drug Driving Analysis</span>
+        </h1>
+        
+        <p class="intro-lead">
+          This website presents an analysis of drug-driving enforcement across Australia. It explores key insights such as:
+        </p>
+        
+        <div class="intro-list">
+          <ul>
+            <li>The number of positive drug tests</li>
+            <li>Trends in charges and arrests over time</li>
+            <li>The demographic groups most affected</li>
+            <li>Jurisdictions with the highest number of fines</li>
+            <li>The types of drugs detected in each jurisdiction</li>
+          </ul>
+        </div>
+        
+        <p class="intro-lead mt-3">
+          It aims to provide a clear understanding of drug-driving patterns and support data-driven discussions on road safety enforcement.
+        </p>
+      </div>
+      
+      <!-- Right side -->
+      <div class="col-lg-6 text-center">
+        <img src="image/background.jpg" alt="Drug Driving Safety" class="img-fluid rounded-4 shadow-lg" style="width: 100%; max-width: 500px; object-fit: cover; aspect-ratio: 1/1;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <!-- Chart 1: Drug Tests Conducted vs Positive Tests -->
+  <div class="chart-section-full bg-light-grey" id="chart1-section">
+    <div class="container py-5">
+      <div class="row align-items-stretch">
+        <div class="col-lg-5 d-flex flex-column">
+          <div class="chart-description">
+            <h6>Are positive tests increasing or decreasing over time?</h6>
+            <h2>Tests Conducted vs Positive Tests Over Time</h2>
+            <p class="mt-3">The content.</p>
+          </div>
+          <div class="chart-filters mt-auto">
+            <div class="filter-group">
+              <label>Time Period:</label>
+              <select id="yearFilter" class="filter-select">
+                <option value="2023-2024" selected>2023 - 2024</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label>Display:</label>
+              <div class="btn-group" id="dataTypeFilter">
+                <button type="button" class="btn-toggle active" id="btnBoth">Both</button>
+                <button type="button" class="btn-toggle" id="btnConducted">Tests Conducted</button>
+                <button type="button" class="btn-toggle" id="btnPositive">Positive Tests</button>
+              </div>
+            </div>
+          </div>
+          <div class="chart-note mt-3">
+            <p>* The content.</p>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div id="chart1"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart 2: Charges and Arrests [Over time & Age group] -->
+  <div class="chart-section-full bg-white" id="chart2-section">
+    <div class="container py-5">
+      <div class="row align-items-stretch flex-row-reverse">
+        <div class="col-lg-5 d-flex flex-column">
+          <div class="chart-description">
+            <h6>What trend can you observe in the number of charges and arrests over time?</h6>
+            <h6>Which age group has the highest number of charges and arrest?</h6>
+            <h2>Charges and Arrests Analysis</h2>
+            <p class="mt-3">The content.</p>
+          </div>
+          <div class="chart-filters mt-auto">
+            <div class="filter-group">
+              <label>View:</label>
+              <div class="btn-group" id="viewFilterChart2">
+                <button type="button" class="btn-toggle active" id="btnOverTime">Over Time</button>
+                <button type="button" class="btn-toggle" id="btnAgeGroup">By Age Group</button>
+              </div>
+            </div>
+            <div class="filter-group">
+              <label>Time Period:</label>
+              <select id="yearFilterChart2" class="filter-select">
+                <option value="2023-2024" selected>2023 - 2024</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label>Display:</label>
+              <div class="btn-group" id="dataTypeFilterChart2">
+                <button type="button" class="btn-toggle active" id="btnCharges">Charges</button>
+                <button type="button" class="btn-toggle" id="btnArrests">Arrests</button>
+              </div>
+            </div>
+          </div>
+          <div class="chart-note mt-3">
+            <p>* Charges: Offences where formal legal charges were laid, including a Court Attendance Notice.</p>
+            <p>* Arrests: Offences where a person was taken into custody by police.</p>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div id="chart2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart 3: Drug Fines by Jurisdiction -->
+  <div class="chart-section-full bg-light-grey" id="chart3-section">
+    <div class="container py-5">
+      <div class="row align-items-stretch">
+        <div class="col-lg-5 d-flex flex-column">
+          <div class="chart-description">
+            <h6>Among all jurisdictions, which has the highest number of fines?</h6>
+            <h2>Drug Fines by Jurisdiction</h2>
+            <p class="mt-3">The content.</p>
+          </div>
+          <div class="chart-note mt-3">
+            <p>* Fines: Offences that resulted in a monetary penalty, including infringement notices.</p>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div id="chart3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart 4: Drug Types vs Jurisdiction -->
+  <div class="chart-section-full bg-white" id="chart4-section">
+    <div class="container-fluid py-4 py-md-5">
+      <div class="row">
+        <div class="col-lg-3 col-xl-3 mb-4 mb-lg-0 ps-4 ps-lg-5">
+          <div class="chart-description">
+            <h6>Which drug type appears most frequently across jurisdictions?</h6>
+            <h2>Drug Types by Jurisdiction</h2>
+            <p>The content.</p>
+          </div>
+          
+          <!-- Dropdown for Drug Types -->
+          <div class="chart-filters mt-4">
+            <div class="filter-group flex-column align-items-start" style="width: 100%;">
+              
+              <!-- Dropdown Toggle Button -->
+              <div class="multi-select-dropdown" style="width: 100%; position: relative;">
+                <button type="button" id="dropdownToggleBtn" class="filter-select" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+                  <span id="selectedCountDisplay">All Drug Types (6 selected)</span>
+                  <span><i class="bi bi-chevron-down"></i></span>
+                </button>
+                
+                <!-- Dropdown Options Panel -->
+                <div id="dropdownOptionsPanel" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #ddd; border-radius: 8px; margin-top: 4px; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                  <div style="padding: 8px; border-bottom: 1px solid #eee;">
+                    <button type="button" id="selectAllBtn" class="btn-sm" style="margin-right: 8px; padding: 4px 12px; background: #1f77b4; color: white; border: none; border-radius: 4px; cursor: pointer;">Select All</button>
+                    <button type="button" id="deselectAllBtn" class="btn-sm" style="padding: 4px 12px; background: #ccc; color: #333; border: none; border-radius: 4px; cursor: pointer;">Deselect All</button>
+                  </div>
+                  <div id="drugTypeCheckboxes" style="max-height: 250px; overflow-y: auto; padding: 8px;">
+                    <label style="display: flex; align-items: center; padding: 6px 8px; cursor: pointer; margin: 0;">
+                      <input type="checkbox" value="AMPHETAMINE" checked style="margin-right: 10px;"> Amphetamine
+                    </label>
+                    <label style="display: flex; align-items: center; padding: 6px 8px; cursor: pointer; margin: 0;">
+                      <input type="checkbox" value="CANNABIS" checked style="margin-right: 10px;"> Cannabis
+                    </label>
+                    <label style="display: flex; align-items: center; padding: 6px 8px; cursor: pointer; margin: 0;">
+                      <input type="checkbox" value="COCAINE" checked style="margin-right: 10px;"> Cocaine
+                    </label>
+                    <label style="display: flex; align-items: center; padding: 6px 8px; cursor: pointer; margin: 0;">
+                      <input type="checkbox" value="ECSTASY" checked style="margin-right: 10px;"> Ecstasy
+                    </label>
+                    <label style="display: flex; align-items: center; padding: 6px 8px; cursor: pointer; margin: 0;">
+                      <input type="checkbox" value="METHYLAMPHETAMINE" checked style="margin-right: 10px;"> Methamphetamine
+                    </label>
+                    <label style="display: flex; align-items: center; padding: 6px 8px; cursor: pointer; margin: 0;">
+                      <input type="checkbox" value="OTHER" checked style="margin-right: 10px;"> Other Drugs
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="chart-note mt-3">
+            <p>* The content.</p>
+          </div>
+        </div>
+        <div class="col-lg-9 col-xl-9">
+          <div id="chart4"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="text-center py-3">
+    &copy; 2026 Safety Road
+  </div>
+</footer>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/utility.js"></script>
+<script src="js/chart1.js"></script>
+<script src="js/chart2.js"></script>
+<script src="js/chart3.js"></script>
+<script src="js/chart4.js"></script>
+<script src="js/load-data.js"></script>
+<script src="js/navigation.js"></script>
+
+</body>
+</html>
