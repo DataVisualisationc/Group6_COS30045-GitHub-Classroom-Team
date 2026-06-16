@@ -1,0 +1,509 @@
+/* Layout - Sticky Footer */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  font-family: 'Quicksand', 'Trebuchet MS', sans-serif;
+  padding-top: 0;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/* Header & Footer Color */
+.navbar-color, footer {
+  background-color: #D1E8FF;
+}
+
+/* Fixed Navbar - ensure stays on top */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1030;
+}
+
+/* Add padding to body to prevent content from hiding behind fixed navbar */
+body {
+  padding-top: 76px;
+}
+
+/* Nav Links */
+.nav-link {
+  color: #000000;
+  padding: 8px 15px !important;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover Effect */
+.nav-link:hover {
+  background-color: #b9d9f9;
+}
+
+.nav-link.active-underline {
+  position: relative;
+  font-weight: 600;
+}
+
+.nav-link.active-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 3px;
+  background-color: #1f77b4;
+  border-radius: 2px;
+}
+
+footer {
+  flex-shrink: 0;
+  color: #000000;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* chart section style */
+.chart-section-full {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.bg-light-grey {
+  background-color: #f5f5f5;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+/* Chart Container */
+#chart1, #chart2, #chart4 {
+  min-height: 450px;
+  width: 100%;
+}
+
+#chart1 svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#chart3 svg {
+  width: 100%;
+  height: auto;
+  min-height: 500px;
+}
+
+/* Chart Tooltip */
+.chart-tooltip {
+  font-family: 'Quicksand', 'Trebuchet MS', sans-serif;
+  pointer-events: none;
+  position: absolute;
+  background: white;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border: 1px solid #e0e0e0;
+}
+
+/* Chart Description Styles */
+.chart-description h6 {
+  color: #525151;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.chart-description h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.chart-description p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* Chart Filters */
+.chart-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-group label {
+  font-weight: 600;
+  margin: 0;
+  font-size: 0.85rem;
+  color: #333;
+  font-family: 'Quicksand', 'Trebuchet MS', sans-serif;
+}
+
+.filter-select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: white;
+  font-family: 'Quicksand', 'Trebuchet MS', sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.filter-select:hover {
+  border-color: #1f77b4;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #1f77b4;
+  box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.1);
+}
+
+/* Button Toggle Group */
+.btn-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-toggle {
+  padding: 8px 18px;
+  border: 1px solid #d0d0d0;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s;
+  font-family: 'Quicksand', 'Trebuchet MS', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.btn-toggle:hover {
+  background-color: #e3f2fd;
+  border-color: #1f77b4;
+}
+
+.btn-toggle.active {
+  background-color: #1f77b4;
+  color: white;
+  border-color: #1f77b4;
+}
+
+/* Chart Note */
+.chart-note {
+  margin-top: 15px;
+  font-size: 0.7rem;
+  color: #888;
+  line-height: 1.4;
+}
+
+.chart-note p {
+  margin-bottom: 4px;
+}
+
+/* Axis Styles */
+.axis-label {
+  font-size: 11px;
+  fill: #666;
+  font-family: 'Quicksand', 'Trebuchet MS', sans-serif;
+}
+
+.chart-tick text {
+  font-size: 10px;
+  font-family: 'Quicksand', 'Trebuchet MS', sans-serif;
+}
+
+/* Placeholder Chart Styles */
+.placeholder-chart {
+  background-color: #fafafa;
+  border: 1px dashed #ccc;
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-content svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Heatmap styles */
+.heatmap-cell {
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+.heatmap-cell:hover {
+  opacity: 0.85;
+}
+
+/* Chart4 Styles */
+#chart4-section .chart-description {
+    margin-bottom: 20px;
+}
+
+#chart4-section .chart-description h6 {
+    margin-bottom: 10px;
+}
+
+#chart4-section .chart-description h2 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+
+#chart4-section .chart-description p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+#chart4-section .chart-filters {
+    margin-top: 15px;
+    padding-top: 12px;
+}
+
+#chart4-section .chart-note {
+    margin-top: 12px;
+}
+
+#chart4-section .chart-note p {
+    font-size: 0.7rem;
+    line-height: 1.3;
+}
+
+/* Ensure proper spacing between description and chart */
+@media (min-width: 992px) {
+    #chart4-section .col-lg-5 {
+        padding-right: 30px;
+    }
+    #chart4-section .col-lg-7 {
+        padding-left: 15px;
+    }
+}
+
+@media (max-width: 991px) {
+    #chart4-section .col-lg-5 {
+        margin-bottom: 30px;
+    }
+}
+
+/* Heatmap container */
+#chart4 {
+    min-height: 520px;
+    overflow-x: auto;
+}
+
+#chart4 svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Chart 1 optimizations */
+#chart1-section .row {
+    align-items: stretch;
+}
+
+#chart1-section .chart-description {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#chart1-section .chart-filters {
+    margin-top: auto;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .chart-description h2 {
+    font-size: 1.4rem;
+  }
+  
+  .chart-filters {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .filter-group {
+    width: 100%;
+  }
+  
+  .filter-select {
+    flex: 1;
+  }
+  
+  .btn-group {
+    width: 100%;
+  }
+  
+  .btn-toggle {
+    flex: 1;
+    text-align: center;
+  }
+
+  #chart1, #chart2, #chart4 {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .chart-description h2 {
+    font-size: 1.2rem;
+  }
+  
+  .chart-section-full {
+    padding: 20px 0;
+  }
+  
+  .placeholder-chart {
+    margin-top: 20px;
+    min-height: 300px;
+  }
+  
+  #chart1, #chart2, #chart4 {
+    min-height: 350px;
+  }
+  
+  /* Adjust body padding for mobile */
+  body {
+    padding-top: 60px;
+  }
+}
+
+/* Drug Type Filter Buttons - Chart 4 */
+.btn-toggle-filter {
+  padding: 6px 14px;
+  border: 1px solid #d0d0d0;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: all 0.2s;
+  font-family: 'Quicksand', 'Trebuchet MS', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.btn-toggle-filter:hover {
+  background-color: #e3f2fd;
+  border-color: #1f77b4;
+}
+
+.btn-toggle-filter.active {
+  background-color: #1f77b4;
+  color: white;
+  border-color: #1f77b4;
+}
+
+.btn-toggle-filter.inactive {
+  background-color: #f0f0f0;
+  color: #999;
+  border-color: #ddd;
+  text-decoration: line-through;
+}
+
+/*  Intro Styles */
+.intro-section-full {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.intro-headline {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1A2C3E;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+.intro-highlight {
+  color: #1f77b4;
+  border-bottom: 3px solid rgba(31, 119, 180, 0.3);
+  display: inline-block;
+}
+
+.intro-lead {
+  font-size: 1.125rem;
+  color: #2c3e50;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.intro-list {
+  margin: 1rem 0 1rem 1.5rem;
+}
+
+.intro-list ul {
+  margin: 0;
+  padding: 0;
+}
+
+.intro-list li {
+  font-size: 1rem;
+  color: #2c3e50;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .intro-headline {
+    font-size: 1.5rem;
+  }
+  .intro-lead {
+    font-size: 1rem;
+  }
+  .intro-list li {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .intro-headline {
+    font-size: 1.3rem;
+  }
+  .intro-list {
+    margin-left: 1rem;
+  }
+}
