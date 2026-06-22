@@ -1,4 +1,4 @@
-/* Layout - Sticky Footer */
+/* Sticky Footer */
 html, body {
   height: 100%;
   margin: 0;
@@ -8,31 +8,99 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #FFFFFF;
-  font-family: 'Quicksand', 'Trebuchet MS', sans-serif;
-  padding-top: 0;
+  font-family: 'Inter', 'Trebuchet MS', sans-serif;
+  padding-top: 76px;
 }
 
 main {
   flex: 1 0 auto;
 }
 
+footer {
+  flex-shrink: 0;
+  background-color: #D1E8FF;
+  color: #000000;
+  padding: 0;
+}
+
+footer .container {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.footer-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1A2C3E;
+  margin-bottom: 0.5rem;
+}
+
+.footer-subtitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.75rem;
+}
+
+.footer-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-list li {
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 6px;
+  padding-left: 18px;
+  position: relative;
+}
+
+.footer-list li::before {
+  content: "-";
+  color: #1f77b4;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.footer-list a {
+  color: #1a5a8c;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-list a:hover {
+  color: #0d3b5c;
+  text-decoration: underline;
+}
+
+/* Footer border top */
+footer .border-top {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Footer copyright */
+footer .text-center {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* Navbar & Navigation */
+
 /* Header & Footer Color */
 .navbar-color, footer {
   background-color: #D1E8FF;
 }
 
-/* Fixed Navbar - ensure stays on top */
+/* Fixed Navbar */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1030;
-}
-
-/* Add padding to body to prevent content from hiding behind fixed navbar */
-body {
-  padding-top: 76px;
 }
 
 /* Nav Links */
@@ -43,7 +111,6 @@ body {
   transition: background-color 0.3s ease;
 }
 
-/* Hover Effect */
 .nav-link:hover {
   background-color: #b9d9f9;
 }
@@ -65,14 +132,9 @@ body {
   border-radius: 2px;
 }
 
-footer {
-  flex-shrink: 0;
-  color: #000000;
-  text-align: center;
-  padding: 1rem 0;
-}
 
-/* chart section style */
+/* --- CHART SECTION --- */
+
 .chart-section-full {
   width: 100%;
   margin: 0;
@@ -87,7 +149,7 @@ footer {
   background-color: #ffffff;
 }
 
-/* Chart Container */
+/* Chart Containers - Default */
 #chart1, #chart2, #chart4 {
   min-height: 450px;
   width: 100%;
@@ -105,9 +167,10 @@ footer {
   min-height: 500px;
 }
 
-/* Chart Tooltip */
+/* --- CHART TOOLTIP --- */
+
 .chart-tooltip {
-  font-family: 'Quicksand', 'Trebuchet MS', sans-serif;
+  font-family: 'Inter', 'Trebuchet MS', sans-serif;
   pointer-events: none;
   position: absolute;
   background: white;
@@ -120,7 +183,8 @@ footer {
   border: 1px solid #e0e0e0;
 }
 
-/* Chart Description Styles */
+
+/* --- CHART DESCRIPTION --- */
 .chart-description h6 {
   color: #525151;
   font-size: 0.85rem;
@@ -144,7 +208,8 @@ footer {
   margin-bottom: 16px;
 }
 
-/* Chart Filters */
+/* --- CHART FILTER --- */
+
 .chart-filters {
   display: flex;
   flex-wrap: wrap;
@@ -166,7 +231,6 @@ footer {
   margin: 0;
   font-size: 0.85rem;
   color: #333;
-  font-family: 'Quicksand', 'Trebuchet MS', sans-serif;
 }
 
 .filter-select {
@@ -174,7 +238,7 @@ footer {
   border-radius: 8px;
   border: 1px solid #ddd;
   background-color: white;
-  font-family: 'Quicksand', 'Trebuchet MS', sans-serif;
+  font-family: 'Inter', 'Trebuchet MS', sans-serif;
   font-size: 0.85rem;
   cursor: pointer;
   transition: border-color 0.2s;
@@ -204,7 +268,7 @@ footer {
   cursor: pointer;
   border-radius: 8px;
   transition: all 0.2s;
-  font-family: 'Quicksand', 'Trebuchet MS', sans-serif;
+  font-family: 'Inter', 'Trebuchet MS', sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
 }
@@ -233,35 +297,12 @@ footer {
 }
 
 /* Axis Styles */
-.axis-label {
-  font-size: 11px;
-  fill: #666;
-  font-family: 'Quicksand', 'Trebuchet MS', sans-serif;
-}
-
 .chart-tick text {
   font-size: 10px;
-  font-family: 'Quicksand', 'Trebuchet MS', sans-serif;
+  font-family: 'Inter', 'Trebuchet MS', sans-serif;
 }
 
-/* Placeholder Chart Styles */
-.placeholder-chart {
-  background-color: #fafafa;
-  border: 1px dashed #ccc;
-  border-radius: 12px;
-  padding: 20px;
-  min-height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.placeholder-content svg {
-  width: 100%;
-  height: auto;
-}
-
-/* Heatmap styles */
+/* Heatmap */
 .heatmap-cell {
   transition: opacity 0.2s;
   cursor: pointer;
@@ -271,181 +312,235 @@ footer {
   opacity: 0.85;
 }
 
-/* Chart4 Styles */
-#chart4-section .chart-description {
-    margin-bottom: 20px;
-}
+/* --- CHART 1 --- */
 
-#chart4-section .chart-description h6 {
-    margin-bottom: 10px;
-}
-
-#chart4-section .chart-description h2 {
-    font-size: 1.5rem;
-    margin-bottom: 12px;
-}
-
-#chart4-section .chart-description p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 15px;
-}
-
-#chart4-section .chart-filters {
-    margin-top: 15px;
-    padding-top: 12px;
-}
-
-#chart4-section .chart-note {
-    margin-top: 12px;
-}
-
-#chart4-section .chart-note p {
-    font-size: 0.7rem;
-    line-height: 1.3;
-}
-
-/* Ensure proper spacing between description and chart */
-@media (min-width: 992px) {
-    #chart4-section .col-lg-5 {
-        padding-right: 30px;
-    }
-    #chart4-section .col-lg-7 {
-        padding-left: 15px;
-    }
-}
-
-@media (max-width: 991px) {
-    #chart4-section .col-lg-5 {
-        margin-bottom: 30px;
-    }
-}
-
-/* Heatmap container */
-#chart4 {
-    min-height: 520px;
-    overflow-x: auto;
-}
-
-#chart4 svg {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Chart 1 optimizations */
+/* Chart 1 Layout */
 #chart1-section .row {
-    align-items: stretch;
+  align-items: stretch;
 }
 
 #chart1-section .chart-description {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+}
+
+#chart1-section .chart-description .mt-3 {
+  margin-top: 6px !important; 
 }
 
 #chart1-section .chart-filters {
-    margin-top: auto;
+  margin-top: auto;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 992px) {
-  .chart-description h2 {
-    font-size: 1.4rem;
-  }
-  
-  .chart-filters {
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .filter-group {
-    width: 100%;
-  }
-  
-  .filter-select {
-    flex: 1;
-  }
-  
-  .btn-group {
-    width: 100%;
-  }
-  
-  .btn-toggle {
-    flex: 1;
-    text-align: center;
-  }
-
-  #chart1, #chart2, #chart4 {
-    min-height: 400px;
-  }
-}
-
-@media (max-width: 768px) {
-  .chart-description h2 {
-    font-size: 1.2rem;
-  }
-  
-  .chart-section-full {
-    padding: 20px 0;
-  }
-  
-  .placeholder-chart {
-    margin-top: 20px;
-    min-height: 300px;
-  }
-  
-  #chart1, #chart2, #chart4 {
-    min-height: 350px;
-  }
-  
-  /* Adjust body padding for mobile */
-  body {
-    padding-top: 60px;
-  }
-}
-
-/* Drug Type Filter Buttons - Chart 4 */
-.btn-toggle-filter {
-  padding: 6px 14px;
-  border: 1px solid #d0d0d0;
-  background-color: white;
-  cursor: pointer;
-  border-radius: 20px;
-  transition: all 0.2s;
-  font-family: 'Quicksand', 'Trebuchet MS', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-.btn-toggle-filter:hover {
-  background-color: #e3f2fd;
-  border-color: #1f77b4;
-}
-
-.btn-toggle-filter.active {
-  background-color: #1f77b4;
-  color: white;
-  border-color: #1f77b4;
-}
-
-.btn-toggle-filter.inactive {
-  background-color: #f0f0f0;
-  color: #999;
-  border-color: #ddd;
-  text-decoration: line-through;
-}
-
-/*  Intro Styles */
-.intro-section-full {
+/* Chart 1 container */
+#chart1 {
+  min-height: 350px;
   width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Chart 1 SVG */
+#chart1 svg {
+  display: block;
+  height: auto;
+}
+
+/* Chart 1 scrollbar */
+#chart1::-webkit-scrollbar {
+  height: 6px;
+}
+
+#chart1::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+#chart1::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+#chart1 {
+  scrollbar-width: thin;
+  scrollbar-color: #ccc #f0f0f0;
+}
+
+/* Bullet point styling */
+.bullet-point {
   margin: 0;
   padding: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
+  list-style: none;
 }
+
+.bullet-point li {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 4px;
+  padding-left: 20px; 
+}
+
+.bullet-point li::before {
+  content: "•";
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -0.5em;
+}
+
+/* Chart 1 axis text on small screens */
+@media (max-width: 768px) {
+  #chart1 .chart-tick text {
+    font-size: 8px !important;
+  }
+  
+  #chart1 .tick text {
+    font-size: 8px !important;
+  }
+}
+
+/* --- CHART 2 --- */
+
+#chart2 {
+  min-height: 350px;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+}
+
+#chart2 svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+#chart2::-webkit-scrollbar {
+  height: 6px;
+}
+
+#chart2::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+#chart2::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+/* Chart 2 axis text on small screens */
+@media (max-width: 768px) {
+  #chart2 .chart-tick text {
+    font-size: 8px !important;
+  }
+  
+  #chart2 .tick text {
+    font-size: 8px !important;
+  }
+}
+
+/* --- CHART 3 --- */
+
+#chart3 {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#chart3 svg {
+  max-width: 100%;
+  height: auto;
+}
+
+#chart3::-webkit-scrollbar {
+  height: 6px;
+}
+
+#chart3::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+#chart3::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+/* --- CHART 4 --- */
+#chart4-section .chart-description {
+  margin-bottom: 20px;
+}
+
+#chart4-section .chart-description h6 {
+  margin-bottom: 10px;
+}
+
+#chart4-section .chart-description h2 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+#chart4-section .chart-description p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+#chart4-section .chart-filters {
+  margin-top: 15px;
+  padding-top: 12px;
+}
+
+#chart4-section .chart-note {
+  margin-top: 12px;
+}
+
+#chart4-section .chart-note p {
+  font-size: 0.7rem;
+  line-height: 1.3;
+}
+
+#chart4 {
+  min-height: 520px;
+  overflow-x: auto;
+}
+
+#chart4 svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+#chart4::-webkit-scrollbar {
+  height: 6px;
+}
+
+#chart4::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+#chart4::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+/* Chart 4 Dropdown */
+#dropdownOptionsPanel {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 4px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* --- INTRO SECTION --- */
 
 .intro-headline {
   font-size: 1.8rem;
@@ -486,24 +581,281 @@ footer {
   margin-bottom: 0.5rem;
 }
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .intro-headline {
-    font-size: 1.5rem;
+/* --- RESPONSIVE --- */
+
+/* Tablet & Smaller (max-width: 992px) */
+@media (max-width: 992px) {
+  .chart-description h2 {
+    font-size: 1.4rem;
   }
-  .intro-lead {
-    font-size: 1rem;
+  
+  .chart-filters {
+    flex-direction: column;
+    gap: 12px;
   }
-  .intro-list li {
-    font-size: 0.9rem;
+  
+  .filter-group {
+    width: 100%;
+  }
+  
+  .filter-select {
+    flex: 1;
+  }
+  
+  .btn-group {
+    width: 100%;
+  }
+  
+  .btn-toggle {
+    flex: 1;
+    text-align: center;
+  }
+
+  #chart1, #chart2, #chart4 {
+    min-height: 400px;
+  }
+  
+  #chart4-section .col-lg-5 {
+    margin-bottom: 30px;
+  }
+
+  /* Chart 1 */
+  #chart1 {
+    overflow-x: auto;
+    overflow-y: visible;
+    min-height: 320px;
+  }
+  
+  #chart1 svg {
+    min-width: 650px;
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+  #chart1 > div {
+    overflow: visible !important;
+    width: 100% !important;
+  }
+
+  /* Chart 2 */
+  #chart2 svg {
+    width: 100% !important;
+    height: auto !important;
+    left: 0 !important;
+  }
+  
+  #chart2 {
+    min-height: 320px;
   }
 }
 
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+  .chart-description h2 {
+    font-size: 1.2rem;
+  }
+  
+  .chart-section-full {
+    padding: 20px 0;
+  }
+  
+  #chart1, #chart2, #chart4 {
+    min-height: 350px;
+  }
+  
+  body {
+    padding-top: 60px;
+  }
+  
+  .intro-headline {
+    font-size: 1.5rem;
+  }
+  
+  .intro-lead {
+    font-size: 1rem;
+  }
+  
+  .intro-list li {
+    font-size: 0.9rem;
+  }
+
+  .chart-description h6 {
+    font-size: 0.7rem;
+  }
+  
+  .chart-description h2 {
+    font-size: 1.1rem;
+  }
+  
+  .chart-description p {
+    font-size: 0.8rem;
+  }
+  
+  .filter-group label {
+    font-size: 0.75rem;
+  }
+  
+  .btn-toggle {
+    font-size: 0.75rem;
+    padding: 5px 12px;
+  }
+  
+  .filter-select {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+  }
+
+  .chart-section-full .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  #chart1-section .col-lg-7,
+  #chart2-section .col-lg-7 {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  #home-section {
+    padding-top: 20px;
+  }
+  
+  #home-section .container {
+    padding-top: 60px;
+  }
+
+  /* Chart 1 */
+  #chart1 {
+    min-height: 280px;
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+  
+  #chart1 svg {
+    min-width: 650px;
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+  #chart1 > div > svg {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    left: 0 !important;
+    position: relative !important;
+  }
+  
+  #chart1-section .col-lg-7 {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    overflow: hidden;
+  }
+
+  /* Chart 2 */
+  #chart2 {
+    min-height: 280px;
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+  
+  #chart2 > div {
+    overflow-x: auto;
+    overflow-y: visible;
+    width: 100%;
+  }
+  
+  #chart2 svg {
+    min-width: 500px;
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+    left: 0 !important;
+  }
+
+  /* Chart 4 */
+  #chart4 {
+    min-height: 400px;
+  }
+  
+  #chart4 svg {
+    min-width: 600px;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Dropdown */
+  #dropdownOptionsPanel {
+    width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+  
+  #drugTypeCheckboxes label {
+    font-size: 0.8rem;
+  }
+}
+
+/* Small Mobile (max-width: 576px) */
 @media (max-width: 576px) {
   .intro-headline {
     font-size: 1.3rem;
   }
+  
   .intro-list {
     margin-left: 1rem;
+  }
+
+  .chart-filters {
+    gap: 10px;
+  }
+  
+  .filter-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+  }
+  
+  .filter-group label {
+    margin-bottom: 2px;
+  }
+  
+  .btn-group {
+    flex-wrap: wrap;
+  }
+  
+  .btn-toggle {
+    flex: 1 1 auto;
+    min-width: 60px;
+    font-size: 0.7rem;
+    padding: 4px 10px;
+  }
+  
+  .filter-select {
+    width: 100%;
+  }
+
+  #chart1, #chart2, #chart4 {
+    min-height: 250px;
+  }
+
+  #chart1 svg {
+    min-width: 650px;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  #chart2 svg {
+    min-width: 400px;
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
+/* Large Screens (min-width: 992px) */
+@media (min-width: 992px) {
+  #chart4-section .col-lg-5 {
+    padding-right: 30px;
+  }
+  #chart4-section .col-lg-7 {
+    padding-left: 15px;
   }
 }

@@ -1,5 +1,3 @@
-// chart4.js - Heatmap: Drug Types vs Jurisdiction
-
 const allDrugTypes = [
     "OTHER",
     "CANNABIS", 
@@ -9,6 +7,7 @@ const allDrugTypes = [
     "AMPHETAMINE"
 ];
 
+/* Currently selected drug types for display */
 let selectedDrugTypes = [...allDrugTypes];
 
 const jurisdictions = ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"];
@@ -35,6 +34,7 @@ const drugTypeDisplayNames = {
 
 const heatmapColors = ["#f7fbff", "#deebf7", "#c6dbef", "#9ecae1", "#6baed6", "#4292c6", "#2171b5", "#08519c"];
 
+/* Count "Yes" responses aggregated by jurisdiction and drug type */
 function getHeatmapData(positiveDrugs) {
     const data = {};
     jurisdictions.forEach(jurisdiction => {
@@ -101,22 +101,7 @@ function getHeatmapData(positiveDrugs) {
     return { data, maxVal };
 }
 
-function getDrugTypeDisplayName(drugType) {
-    return drugTypeDisplayNames[drugType] || drugType;
-}
-
-function getJurisdictionDisplayName(jurisdiction) {
-    const names = {
-        "ACT": "ACT", "NSW": "NSW", "NT": "NT", "QLD": "QLD",
-        "SA": "SA", "TAS": "TAS", "VIC": "VIC", "WA": "WA"
-    };
-    return names[jurisdiction] || jurisdiction;
-}
-
-function getJurisdictionFullName(jurisdiction) {
-    return jurisdictionFullNames[jurisdiction] || jurisdiction;
-}
-
+/* Map value to heatmap color using interpolation */
 function getColorForValue(value, maxVal) {
     if (maxVal === 0) return "#e0e0e0";
     const intensity = value / maxVal;
@@ -147,6 +132,7 @@ function getColorForValue(value, maxVal) {
     return `rgb(${r}, ${g}, ${b})`;
 }
 
+/* Draw heatmap chart */
 function drawHeatmapChart() {
     const container = document.getElementById("chart4");
     if (!container) return;
@@ -226,8 +212,8 @@ function drawHeatmapChart() {
             cell.on("mouseover", function(event) {
                 tooltip.transition().duration(200).style("opacity", 0.95);
                 tooltip.html(`
-                    <strong>${getJurisdictionFullName(jurisdiction)}</strong><br/>
-                    <strong>${getDrugTypeDisplayName(drugType)}</strong><br/>
+                    <strong>${jurisdictionFullNames[jurisdiction]}</strong><br/>
+                    <strong>${drugTypeDisplayNames[drugType]}</strong><br/>
                     Number: ${value.toLocaleString()}
                 `)
                 .style("left", (event.pageX + 10) + "px")
@@ -244,7 +230,8 @@ function drawHeatmapChart() {
             });
         });
     });
-    
+
+    /* x-axis - Jurisdiction labels */
     const xAxisGroup = svg.append("g")
         .attr("transform", `translate(0,${innerHeight})`)
         .attr("class", "x-axis");
@@ -252,7 +239,7 @@ function drawHeatmapChart() {
     const xAxis = d3.axisBottom(d3.scaleBand()
         .domain(jurisdictions)
         .range([0, innerWidth]))
-        .tickFormat(d => getJurisdictionDisplayName(d));
+        .tickFormat(d => d);
     
     xAxisGroup.call(xAxis);
     
@@ -261,18 +248,18 @@ function drawHeatmapChart() {
         .style("font-family", "'Quicksand', sans-serif")
         .style("font-weight", "bold")
         .style("fill", "#333")
-        .attr("transform", "")
         .attr("dx", "0em")
         .attr("dy", "0.8em")
         .style("text-anchor", "middle");
     
+    // y-axis - Drug type label
     const yAxisGroup = svg.append("g")
         .attr("class", "y-axis");
     
     const yAxis = d3.axisLeft(d3.scaleBand()
         .domain(displayDrugTypes)
         .range([0, innerHeight]))
-        .tickFormat(d => getDrugTypeDisplayName(d));
+        .tickFormat(d => drugTypeDisplayNames[d]);
     
     yAxisGroup.call(yAxis);
     
@@ -333,7 +320,7 @@ function drawHeatmapChart() {
             .attr("y", -8)
             .style("font-size", "11px")
             .style("fill", "#666")
-            .text("0");
+            .text("Lower");
         
         legendGroup.append("text")
             .attr("x", legendWidth)
@@ -341,15 +328,7 @@ function drawHeatmapChart() {
             .attr("text-anchor", "end")
             .style("font-size", "11px")
             .style("fill", "#666")
-            .text(maxVal.toLocaleString());
-        
-        legendGroup.append("text")
-            .attr("x", legendWidth / 2)
-            .attr("y", -8)
-            .attr("text-anchor", "middle")
-            .style("font-size", "11px")
-            .style("fill", "#666")
-            .text("Number");
+            .text("Higher");
     }
 }
 
@@ -357,12 +336,8 @@ function drawChart4() {
     drawHeatmapChart();
 }
 
+/* Initialize dropdown filter and checkbox */
 function initChart4Controls() {
-    const periodFilter = document.getElementById("yearFilterChart4");
-    if (periodFilter && periodFilter.parentNode) {
-        periodFilter.parentNode.style.display = "none";
-    }
-    
     const toggleBtn = document.getElementById("dropdownToggleBtn");
     const optionsPanel = document.getElementById("dropdownOptionsPanel");
     const checkboxes = document.querySelectorAll("#drugTypeCheckboxes input[type='checkbox']");
@@ -370,14 +345,41 @@ function initChart4Controls() {
     const deselectAllBtn = document.getElementById("deselectAllBtn");
     const selectedCountDisplay = document.getElementById("selectedCountDisplay");
     
-    toggleBtn.addEventListener("click", function(e) {
-        e.stopPropagation();
-        const isVisible = optionsPanel.style.display === "block";
-        optionsPanel.style.display = isVisible ? "none" : "block";
-    });
+    if (selectAllBtn) {
+        selectAllBtn.style.transition = "color 0.2s ease";
+        selectAllBtn.style.backgroundColor = "transparent";
+        selectAllBtn.style.color = "#000000";
+        selectAllBtn.addEventListener("mouseenter", function() {
+            this.style.color = "#1f77b4";
+        });
+        selectAllBtn.addEventListener("mouseleave", function() {
+            this.style.color = "#000000";
+        });
+    }
     
+    if (deselectAllBtn) {
+        deselectAllBtn.style.transition = "color 0.2s ease";
+        deselectAllBtn.style.backgroundColor = "transparent";
+        deselectAllBtn.style.color = "#000000";
+        deselectAllBtn.addEventListener("mouseenter", function() {
+            this.style.color = "#1f77b4";
+        });
+        deselectAllBtn.addEventListener("mouseleave", function() {
+            this.style.color = "#000000";
+        });
+    }
+    
+    if (toggleBtn) {
+        toggleBtn.addEventListener("click", function(e) {
+            e.stopPropagation();
+            const isVisible = optionsPanel.style.display === "block";
+            optionsPanel.style.display = isVisible ? "none" : "block";
+        });
+    }
+    
+    /* Close dropdown when clicking other place */
     document.addEventListener("click", function(e) {
-        if (!toggleBtn.contains(e.target) && !optionsPanel.contains(e.target)) {
+        if (toggleBtn && !toggleBtn.contains(e.target) && optionsPanel && !optionsPanel.contains(e.target)) {
             optionsPanel.style.display = "none";
         }
     });
@@ -404,19 +406,23 @@ function initChart4Controls() {
         cb.addEventListener("change", updateSelection);
     });
     
-    selectAllBtn.addEventListener("click", function() {
-        checkboxes.forEach(cb => {
-            cb.checked = true;
+    if (selectAllBtn) {
+        selectAllBtn.addEventListener("click", function() {
+            checkboxes.forEach(cb => {
+                cb.checked = true;
+            });
+            updateSelection();
         });
-        updateSelection();
-    });
+    }
     
-    deselectAllBtn.addEventListener("click", function() {
-        checkboxes.forEach(cb => {
-            cb.checked = false;
+    if (deselectAllBtn) {
+        deselectAllBtn.addEventListener("click", function() {
+            checkboxes.forEach(cb => {
+                cb.checked = false;
+            });
+            updateSelection();
         });
-        updateSelection();
-    });
+    }
     
     updateSelection();
 }
@@ -439,11 +445,4 @@ window.addEventListener('dataLoaded', function(e) {
         drawChart4();
         initChart4Controls();
     }, 100);
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    if (window.globalData && window.globalData.positiveDrugs) {
-        drawChart4();
-        initChart4Controls();
-    }
 });

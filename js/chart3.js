@@ -1,4 +1,4 @@
-// chart3.js australia map 
+// chart3.js australia map (choropleth map)
 
 window.addEventListener('dataLoaded', function(e) {
     const data = e.detail;
@@ -38,6 +38,7 @@ window.addEventListener('dataLoaded', function(e) {
     
     const pathGenerator = d3.geoPath().projection(projection);
     
+    // Convert abbreviation to full name
     const jurisdictionMap = {
         "ACT": "Australian Capital Territory",
         "NSW": "New South Wales",
@@ -49,6 +50,7 @@ window.addEventListener('dataLoaded', function(e) {
         "WA": "Western Australia"
     };
     
+    // Calculate total fines per jurisdiction
     function getTotalFines(jurisdictionName, positiveDrugs) {
         let csvJurisdiction = null;
         for (const [code, name] of Object.entries(jurisdictionMap)) {
@@ -96,11 +98,13 @@ window.addEventListener('dataLoaded', function(e) {
         return `rgb(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)})`;
     }
     
+    // Fetch Australian geographic data (australia.json) and render map
     d3.json("dataset/australia.json").then(geoData => {
         function renderMap() {
             svg.selectAll(".state-path").remove();
             svg.selectAll(".legend-group").remove();
             
+            // Calculate each states fines value
             const stateData = [];
             geoData.features.forEach(feature => {
                 const stateName = feature.properties.STATE_NAME;
@@ -118,7 +122,7 @@ window.addEventListener('dataLoaded', function(e) {
                 .append("path")
                 .attr("class", "state-path")
                 .attr("d", d => pathGenerator(d.feature))
-                .attr("fill", d => d.value === 0 ? "#e0e0e0" : getColor(d.value, minVal, maxVal))
+                .attr("fill", d => d.value === 0 ? "#e0e0e0" : getColor(d.value, minVal, maxVal)) 
                 .attr("stroke", "#333")
                 .attr("stroke-width", 1.2)
                 .attr("stroke-linejoin", "round")

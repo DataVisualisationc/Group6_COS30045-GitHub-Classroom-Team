@@ -1,3 +1,4 @@
+/* Singlet tooltip shared across all charts (not call in chart4.js) */
 let globalTooltip = null;
 
 function getTooltip() {
@@ -21,6 +22,7 @@ function getTooltip() {
     return globalTooltip;
 }
 
+/* Attach hover handlers to elements with tooltip support */
 function setupTooltipHandlers(element, tooltip, content, onShow, onHide) {
     element.on("mouseover", function(event) {
         tooltip.transition().duration(200).style("opacity", 0.95);
@@ -43,16 +45,8 @@ function formatNumber(num) {
     return num.toLocaleString();
 }
 
-function getQuarterFromMonth(month) {
-    if (month <= 2) return "Q1";
-    if (month <= 5) return "Q2";
-    if (month <= 8) return "Q3";
-    return "Q4";
-}
-
 window.utility = {
     getTooltip: getTooltip,
     setupTooltipHandlers: setupTooltipHandlers,
-    formatNumber: formatNumber,
-    getQuarterFromMonth: getQuarterFromMonth
+    formatNumber: formatNumber
 };

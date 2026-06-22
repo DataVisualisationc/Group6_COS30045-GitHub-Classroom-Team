@@ -1,8 +1,11 @@
 // navigation.js 
+
+/* Initialize navigation when DOM is ready */
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
     const logoLink = document.getElementById('logo-home');
     
+    // Smooth scroll to section
     function scrollToSection(sectionId) {
         const section = document.getElementById(sectionId);
         if (section) {
@@ -16,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Switch Chart 2 view between line and age group 
     function switchChart2View(view) {
         const overTimeBtn = document.getElementById('btnOverTime');
         const ageGroupBtn = document.getElementById('btnAgeGroup');
@@ -27,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    //Determine and update active nav link based on scroll position 
     function updateActiveNav() {
         const scrollPosition = window.scrollY + 100;
         
@@ -126,6 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    /* Update nav when Chart 2 view buttons are clicked */
     const overTimeBtn = document.getElementById('btnOverTime');
     const ageGroupBtn = document.getElementById('btnAgeGroup');
     

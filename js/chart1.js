@@ -1,11 +1,11 @@
-// chart1.js
-
+/* Chart dimensions and margins */
 let chart1Config = {
     width: 850,
     height: 450,
     margin: { top: 30, right: 80, bottom: 100, left: 70 }
 };
 
+/* Current filter selections */
 let currentPeriod = "2023-2024";
 let currentDataType = "both";
 
@@ -13,9 +13,11 @@ const colorConducted = "#1f77b4";
 const colorPositive = "#ff7f0e";
 const quarters = ["Q1", "Q2", "Q3", "Q4"];
 
+/* Global max values for Y-axis scaling */
 let globalConductedMax = 0;
 let globalPositiveMax = 0;
 
+/* Calculate chart width based on container */
 function getResponsiveChartWidth() {
     const container = document.getElementById("chart1");
     if (container) {
@@ -25,6 +27,7 @@ function getResponsiveChartWidth() {
     return 800;
 }
 
+/* Aggregate monthly drug tests into quarterly totals */
 function processQuarterlyData(drugTests) {
     const monthlyData = {};
     
@@ -82,6 +85,7 @@ function processQuarterlyData(drugTests) {
     });
 }
 
+/* Aggregate monthly positive tests into quarterly totals */
 function processPositiveQuarterlyData(positiveDrugs) {
     const monthlyData = {};
     
@@ -139,6 +143,7 @@ function processPositiveQuarterlyData(positiveDrugs) {
     });
 }
 
+/* Apply year period filter to quarterly data */
 function filterDataByPeriod(quarterlyData, period) {
     if (period === "2023") {
         return quarterlyData.filter(d => d.year === 2023);
@@ -148,13 +153,7 @@ function filterDataByPeriod(quarterlyData, period) {
     return quarterlyData;
 }
 
-function getXAxisLabels(data) {
-    return data.map(d => {
-        const yearShort = d.year.toString().slice(-2);
-        return `${d.quarter} ${yearShort}`;
-    });
-}
-
+/* Calculate global max values for both data series */
 function calculateGlobalMaxValues(drugTests, positiveDrugs) {
     const allConducted = processQuarterlyData(drugTests);
     const allPositive = processPositiveQuarterlyData(positiveDrugs);
@@ -163,16 +162,20 @@ function calculateGlobalMaxValues(drugTests, positiveDrugs) {
     globalPositiveMax = allPositive.length > 0 ? Math.max(...allPositive.map(d => d.positive)) : 0;
 }
 
+/* Determine max value based on current data type view */
 function getYAxisMaxValue() {
     if (currentDataType === "conducted") {
-        return globalConductedMax * 1.1;
+        // For "Test Conducted" view, use a fixed max of 200,000
+        return 200000;
     } else if (currentDataType === "positive") {
         return 12000;
     } else {
-        return Math.max(globalConductedMax, globalPositiveMax) * 1.1;
+        // For "both" view, use a fixed max of 200,000
+        return 200000;
     }
 }
 
+/* Draw the chart */
 function drawChart1() {
     const data = window.globalData;
     if (!data || !data.drugTests || !data.positiveDrugs) return;
@@ -214,11 +217,8 @@ function drawChart1() {
         
         chartData.push({
             name: "Tests Conducted",
-            values: allQuarters.map((q, index) => ({
+            values: allQuarters.map((q) => ({
                 value: conductedMap.get(`${q.year} ${q.quarter}`) || 0,
-                label: `${q.quarter} ${q.year.toString().slice(-2)}`,
-                year: q.year,
-                quarter: q.quarter,
                 key: `${q.year} ${q.quarter}`
             })),
             color: colorConducted
@@ -233,11 +233,8 @@ function drawChart1() {
         
         chartData.push({
             name: "Positive Tests",
-            values: allQuarters.map((q, index) => ({
+            values: allQuarters.map((q) => ({
                 value: positiveMap.get(`${q.year} ${q.quarter}`) || 0,
-                label: `${q.quarter} ${q.year.toString().slice(-2)}`,
-                year: q.year,
-                quarter: q.quarter,
                 key: `${q.year} ${q.quarter}`
             })),
             color: colorPositive
@@ -373,6 +370,7 @@ function drawChart1() {
     });
 }
 
+/* Initialize chart filter event listeners */
 function initChart1Controls() {
     const periodFilter = document.getElementById("yearFilter");
     if (periodFilter) {
